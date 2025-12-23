@@ -1,64 +1,137 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ACCESS</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FILE 2561-A</title>
 
 <style>
-body{
-  margin:0;
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#ffffff;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  letter-spacing:1px;
-}
+  :root{
+    --ink:#111;
+    --paper:#fff;
+    --bar:#1f1f1f;
+  }
 
-.box{
-  border:2px dashed #000;
-  padding:28px;
-  text-align:center;
-  max-width:520px;
-}
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--paper);
+    color:var(--ink);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    letter-spacing: .8px;
+  }
 
-h1{
-  font-size:22px;
-  margin-bottom:10px;
-}
+  .panel{
+    width:min(760px, 92vw);
+  }
 
-p{
-  font-size:12px;
-  opacity:.7;
-}
+  /* dashed frame like your reference */
+  .frame{
+    border:3px dashed var(--ink);
+    padding:34px 22px 26px;
+    position:relative;
+  }
 
-button{
-  margin-top:18px;
-  padding:12px 20px;
-  border:2px solid #000;
-  background:#fff;
-  font-weight:700;
-  cursor:pointer;
-  text-transform:uppercase;
-}
+  .title{
+    text-align:center;
+    font-weight:900;
+    font-size:22px;
+    margin:0 0 18px;
+    text-transform:uppercase;
+  }
+
+  /* character */
+  .sprite{
+    display:flex;
+    justify-content:center;
+    margin: 6px 0 10px;
+  }
+
+  .sprite img{
+    width:190px;         /* adjust this to make him bigger/smaller */
+    height:auto;
+    image-rendering: pixelated;
+  }
+
+  /* gritty bar */
+  .bar{
+    margin-top:14px;
+    padding:18px 16px;
+    text-align:center;
+    background:var(--bar);
+    color:#fff;
+    font-weight:900;
+    font-size:22px;
+    text-transform:uppercase;
+    position:relative;
+    overflow:hidden;
+  }
+
+  /* fake texture (grunge) */
+  .bar:before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(255,255,255,.12) 0 2px, transparent 3px),
+      radial-gradient(circle at 70% 60%, rgba(255,255,255,.10) 0 2px, transparent 3px),
+      radial-gradient(circle at 45% 80%, rgba(255,255,255,.08) 0 2px, transparent 3px);
+    opacity:.55;
+    mix-blend-mode:overlay;
+    pointer-events:none;
+  }
+
+  .btn{
+    margin-top:16px;
+    display:flex;
+    justify-content:center;
+  }
+
+  button{
+    border:2px solid var(--ink);
+    background:#fff;
+    padding:12px 18px;
+    font-weight:900;
+    text-transform:uppercase;
+    cursor:pointer;
+  }
+
+  .log{
+    margin-top:10px;
+    font-size:12px;
+    opacity:.7;
+    text-align:center;
+  }
 </style>
 </head>
 
 <body>
-  <div class="box">
-    <h1>RESTRICTED SIGNAL DETECTED</h1>
-    <p>ACCESS WINDOW ACTIVE</p>
+  <div class="panel">
+    <div class="frame">
+      <h1 class="title">RESTRICTED SIGNAL DETECTED</h1>
 
-    <button onclick="enter()">ACCESS</button>
+      <div class="sprite">
+        <!-- swap this URL later with your hosted image if needed -->
+        <img src="https://raw.githubusercontent.com/tyresewattscollege/file-2561/main/sprite.png" alt="sprite">
+      </div>
 
-    <p id="log">LOG: 0001</p>
+      <div class="bar" id="barText">ACCESS ATTEMPTED.</div>
+
+      <div class="btn">
+        <button onclick="enter()">ACCESS</button>
+      </div>
+
+      <div class="log" id="log">LOG: 0001</div>
+    </div>
   </div>
 
 <script>
 function enter(){
   document.getElementById("log").innerText = "LOG: ACCESS ATTEMPTED…";
+  document.getElementById("barText").innerText = "ACCESS GRANTED.";
   setTimeout(() => {
     window.location.href = "https://linktr.ee/TY.REESE";
   }, 900);
