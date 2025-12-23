@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ACCESS</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#ffffff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  letter-spacing:1px;
+}
+
+.box{
+  border:2px dashed #000;
+  padding:28px;
+  text-align:center;
+  max-width:520px;
+}
+
+h1{
+  font-size:22px;
+  margin-bottom:10px;
+}
+
+p{
+  font-size:12px;
+  opacity:.7;
+}
+
+button{
+  margin-top:18px;
+  padding:12px 20px;
+  border:2px solid #000;
+  background:#fff;
+  font-weight:700;
+  cursor:pointer;
+  text-transform:uppercase;
+}
+</style>
+</head>
+
+<body>
+  <div class="box">
+    <h1>RESTRICTED SIGNAL DETECTED</h1>
+    <p>ACCESS WINDOW ACTIVE</p>
+
+    <button onclick="enter()">ACCESS</button>
+
+    <p id="log">LOG: 0001</p>
+  </div>
+
+<script>
+function enter(){
+  document.getElementById("log").innerText = "LOG: ACCESS ATTEMPTED…";
+  setTimeout(() => {
+    window.location.href = "https://linktr.ee/TY.REESE";
+  }, 900);
+}
+</script>
+
+</body>
+</html>
